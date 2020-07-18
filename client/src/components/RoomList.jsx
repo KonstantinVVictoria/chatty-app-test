@@ -7,6 +7,7 @@ class RoomList extends Component {
   getUsers = () => {
     fetch(window.domain + "/api/get-users").then((response) => {
       response.json().then((response) => {
+        console.log(response);
         this.setState({ activeUsers: response.user[0] });
       });
     });
