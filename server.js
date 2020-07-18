@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 var userTable = {};
+var users = 0;
 
 app.use(express.static(path.join("client/build")));
 app.use(bodyParser.json());
@@ -17,7 +18,8 @@ app.listen(port, (err) => {
 });
 app.get("/api/get-users", (request, response) => {
   console.log("recieved");
-  response.json({ user: [userTable] });
+  users++;
+  response.json({ user: [userTable], total: users });
 });
 app.post("/api/login", (request, response) => {
   let ip =
