@@ -5,7 +5,7 @@ class RoomList extends Component {
     this.getUsers();
   };
   getUsers = () => {
-    fetch("http://localhost:5000/api/get-users").then((response) => {
+    fetch(window.domain + "/api/get-users").then((response) => {
       response.json().then((response) => {
         this.setState({ activeUsers: response.user[0] });
       });
@@ -20,7 +20,7 @@ class RoomList extends Component {
         {(() => {
           let string = [
             <h1>
-              Active Users <br />
+              Active Users <br></br>
             </h1>,
           ];
           if (this.state.activeUsers)

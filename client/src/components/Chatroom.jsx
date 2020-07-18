@@ -54,11 +54,12 @@ class Chatroom extends Component {
   };
 
   login = (username) => {
+    console.log(process.env);
     document.getElementsByClassName(
       "login-container center-completely"
     )[0].style.opacity = 0;
     this.setState({ username: username });
-    fetch("http://localhost:5000/api/login", {
+    fetch(window.domain + "/api/login", {
       mode: "cors",
       method: "POST",
       headers: {
