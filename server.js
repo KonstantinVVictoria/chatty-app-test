@@ -18,10 +18,11 @@ app.listen(port, (err) => {
 });
 app.get("/api/get-users", (request, response) => {
   console.log("recieved");
-  users++;
+
   response.json({ user: userTable, total: users });
 });
 app.post("/api/login", (request, response) => {
+  users++;
   let ip =
     request.headers["x-forwarded-for"] ||
     request.connection.remoteAddress ||
@@ -29,7 +30,6 @@ app.post("/api/login", (request, response) => {
     (request.connection.socket
       ? request.connection.socket.remoteAddress
       : null);
-  userTable[`${ip}`] = request.body.username;
-  console.log(userTable);
-  response.json({ ip: ip });
+  userTable[ip] = request.body.username;
+  response.json({ ip: ip, users: userTable });
 });
