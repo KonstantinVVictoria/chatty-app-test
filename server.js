@@ -19,7 +19,7 @@ app.listen(port, (err) => {
 app.get("/api/get-users", (request, response) => {
   console.log("recieved");
   users++;
-  response.json({ user: [userTable], total: users });
+  response.json({ user: userTable, total: users });
 });
 app.post("/api/login", (request, response) => {
   let ip =
@@ -29,7 +29,7 @@ app.post("/api/login", (request, response) => {
     (request.connection.socket
       ? request.connection.socket.remoteAddress
       : null);
-  userTable[ip] = request.body.username;
+  userTable[`${ip}`] = request.body.username;
   console.log(userTable);
   response.json({ ip: ip });
 });
