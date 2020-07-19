@@ -30,6 +30,12 @@ class ChatBar extends Component {
               padding: `0px ${window.vH * 40 * 0.1 * 0.9 * 0.5}px 0px`,
               fontSize: 3 * window.vH + "px",
             }}
+            onChange={(e) => {
+              e.target.value =
+                e.target.value.length <= 250
+                  ? e.target.value
+                  : e.target.value.substring(0, 250);
+            }}
           />
           <button
             className="chatbar-send"
