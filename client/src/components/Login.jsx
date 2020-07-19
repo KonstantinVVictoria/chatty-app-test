@@ -30,7 +30,7 @@ class Login extends Component {
               width: "100%",
               height: "100%",
               fontSize: 3 * window.vH,
-              padding: "0px " + 2 * window.vH + "px " + "0px",
+              padding: "0px " + 2 * window.vH + "px 0px",
             }}
             onKeyDown={(e) => {
               e.target.value =

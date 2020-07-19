@@ -49,6 +49,7 @@ body {
 .chatroom-container {
   background-color: rgb(226, 226, 226);
   border-radius: 25px;
+  border: none;
   box-shadow: 12px 12px 12px 5px rgba(0, 0, 0, 0.08),
     -12px -12px 12px 5px rgba(255, 255, 255, 0.4);
 }
@@ -61,7 +62,7 @@ body {
   box-shadow: 12px 12px 12px 5px rgba(0, 0, 0, 0.08),
     -12px -12px 12px 5px rgba(255, 255, 255, 0.4);
   opacity: 0%;
-  transition: opacity 2s ease 2s, width 0.5s ease-out, height 0.5s ease-out;
+  transition: opacity 1s ease 1s, width 0.5s ease-out, height 0.5s ease-out;
 }
 .login-input {
   text-align: center;
@@ -70,7 +71,7 @@ body {
   position: relative;
   border-radius: 100px;
   border: none;
-  color: rgb(146, 146, 146);
+  color: rgb(136, 81, 209);
 }
 .login-button {
   outline: none;
@@ -86,17 +87,89 @@ body {
 .login-error-alert {
   overflow: hidden;
   visibility: hidden;
+  font-weight: 200;
   transform: translateY(-100%);
   position: relative;
   background-color: rgb(245, 88, 88);
   color: rgba(255, 255, 255, 0);
   text-align: center;
+  border-radius: 0px;
   transition: width 250ms cubic-bezier(0.2, 0.47, 0.48, 0.87),
-    color 250ms cubic-bezier(0.2, 0.47, 0.48, 0.87) 250ms;
+    color 125ms cubic-bezier(0.2, 0.47, 0.48, 0.87), border-radius 500ms ease;
+}
+.login-error-alert:hover {
+  border-radius: 100px;
+}
+.chat-container {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+.chat {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 80%;
+  width: 100%;
+  margin-top: 10%;
+}
+.chatbar-container {
+  display: flex;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+}
+.chatbar-input {
+  color: rgb(136, 81, 209);
+  box-sizing: border-box;
+  padding: 0% 0% 0%;
+  border-radius: 100px 0px 0px 100px;
+  border: none;
+  height: 100%;
+  width: 90%;
+  box-shadow: 12px 12px 12px 5px rgba(0, 0, 0, 0.08),
+    -12px -12px 12px 5px rgba(255, 255, 255, 0.4);
+}
+.chatbar-send {
+  opacity: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgb(136, 81, 209);
+  border: none;
+  height: 100%;
+  width: 10%;
+  border-radius: 0px 100px 100px 0px;
+  padding: 0%;
+  box-shadow: 12px 12px 12px 5px rgba(0, 0, 0, 0.08),
+    -12px -12px 12px 5px rgba(255, 255, 255, 0.4),
+    inset 12px 12px 12px 5px rgba(0, 0, 0, 0.08);
+  transition: opacity 40ms ease-in;
+}
+
+.chatbar-send:hover {
+  opacity: 70%;
+}
+.chatbubble-container {
+  display: flex;
+  width: 100%;
+}
+.bubble {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 100px 100px 0px 100px;
+  box-shadow: 12px 12px 12px 5px rgba(0, 0, 0, 0.08),
+    -12px -12px 12px 5px rgba(255, 255, 255, 0.7);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 1vh 1vh 1vh !important;
 }
 .room-list-container {
   text-align: center;
 }
+
 @media only screen and (max-width: 1200px) {
   .App {
     padding: 0 !important;

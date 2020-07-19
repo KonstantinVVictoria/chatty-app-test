@@ -2,17 +2,9 @@ import React, { Component } from "react";
 import LoadingBar from "./LoadingBar.jsx";
 import Login from "./Login.jsx";
 import RoomList from "./RoomList.jsx";
+import Chat from "./Chat.jsx";
 class Chatroom extends Component {
-  state = { mainLoader: true, username: null, stage: null };
-
-  constructor(props) {
-    super(props);
-    this.state.stage = props.stage;
-  }
-
-  setStage = (stage) => {
-    this.setState({ stage: stage });
-  };
+  state = { username: null, stage: "login" };
 
   renderStage = () => {
     switch (this.state.stage) {
@@ -26,6 +18,8 @@ class Chatroom extends Component {
         );
       case "lobby":
         return <RoomList></RoomList>;
+      case "chat":
+        return <Chat user={this.state.username}></Chat>;
       default:
         return "";
     }
@@ -54,27 +48,10 @@ class Chatroom extends Component {
   };
 
   login = (username) => {
-    console.log(process.env);
     document.getElementsByClassName(
       "login-container center-completely"
     )[0].style.opacity = 0;
-    this.setState({ username: username });
-    fetch(window.domain + "/api/login", {
-      mode: "cors",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        username: username,
-      }),
-    }).then((waitForResponse) =>
-      waitForResponse.json().then((response) => {
-        console.log(response);
-        this.setState({ stage: "lobby" });
-      })
-    );
+    this.setState({ username: username, stage: "chat" });
   };
 
   render() {
