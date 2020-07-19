@@ -18,7 +18,7 @@ app.listen(port, (err) => {
 var userTable = {};
 var users = 0;
 var chat = [];
-io.listen(8000);
+io.listen(3000);
 
 io.on("connection", (socket) => {
   users++;
