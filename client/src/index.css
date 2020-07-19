@@ -131,7 +131,7 @@ body {
     -12px -12px 12px 5px rgba(255, 255, 255, 0.4);
 }
 .chatbar-send {
-  opacity: 100%;
+  opacity: 1;
   display: flex;
   align-items: center;
   background-color: rgb(136, 81, 209);
@@ -147,7 +147,7 @@ body {
 }
 
 .chatbar-send:hover {
-  opacity: 70%;
+  opacity: 0.7;
 }
 .chatbubble-container {
   display: flex;
