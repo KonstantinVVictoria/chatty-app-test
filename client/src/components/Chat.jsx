@@ -3,7 +3,7 @@ import ChatBar from "./ChatBar.jsx";
 import ChatBubble from "./ChatBubble.jsx";
 
 import openSocket from "socket.io-client";
-const socket = openSocket("http://localhost:8000");
+const socket = openSocket(window.domain);
 socket.on("connect", function () {
   socket.on("users_count", function (data) {
     console.log(data);
