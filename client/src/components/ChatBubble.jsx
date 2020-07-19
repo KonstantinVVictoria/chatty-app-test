@@ -34,7 +34,7 @@ class ChatBubble extends Component {
               style={{
                 marginTop: "0px",
                 marginBottom: "0px",
-                marginLeft: this.props.isSelf ? "auto" : 2 * window.vH + "px",
+                marginLeft: this.props.isSelf ? "auto" : "0px",
                 color: "white",
                 fontSize: window.vH * 2,
               }}

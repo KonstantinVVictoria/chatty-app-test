@@ -35,7 +35,7 @@ class Chat extends Component {
     socket.on("send-messages", function (msg) {
       console.log("yes");
       let msgs = component.state.msg.slice();
-      msgs.unshift(msgs);
+      msgs.unshift(msg);
       console.log(msgs);
       component.setState({ msg: msgs });
     });
