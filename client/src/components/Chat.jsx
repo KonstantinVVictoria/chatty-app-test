@@ -3,7 +3,12 @@ import ChatBar from "./ChatBar.jsx";
 import ChatBubble from "./ChatBubble.jsx";
 
 import openSocket from "socket.io-client";
-const socket = openSocket("http://localhost:5000");
+window.domain =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000"
+    : "https://chatty-app-test.herokuapp.com";
+
+const socket = openSocket(window.domain);
 socket.on("connect", function () {
   socket.on("users_count", function (data) {
     console.log(data);
@@ -21,13 +26,13 @@ class Chat extends Component {
 
   constructor(props) {
     super(props);
-    socket.emit("introduction", this.props.user);
     let newMsg = {};
     newMsg["user"] = this.props.user;
     newMsg["msg"] = "Hello everyone, my name is " + this.props.user + "!";
     newMsg["isSelf"] = true;
     this.state.msg.push(newMsg);
-    socket.emit("get-messages", newMsg);
+    let sendMsg = { user: newMsg.user, msg: newMsg.msg, isSelf: false };
+    socket.emit("get-messages", sendMsg);
   }
 
   componentDidMount = () => {

@@ -23,11 +23,6 @@ io.on("connection", (socket) => {
   console.log("connected");
   socket.emit("users_count", users);
   console.log(users);
-  socket.on("introduction", function (name) {
-    let msg = {};
-    msg[`${name}`] = "Hello everyone, my name is " + name;
-    socket.broadcast.emit("send-messages", msg);
-  });
   socket.on("get-messages", function (msg) {
     console.log(msg);
     socket.broadcast.emit("send-messages", msg);
