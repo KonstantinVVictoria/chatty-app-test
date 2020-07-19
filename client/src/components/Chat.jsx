@@ -31,29 +31,46 @@ class Chat extends Component {
     newMsg["msg"] = "Hello everyone, my name is " + this.props.user + "!";
     newMsg["isSelf"] = true;
     this.state.msg.push(newMsg);
-    let sendMsg = { user: newMsg.user, msg: newMsg.msg, isSelf: false };
+    let sendMsg = {
+      user: newMsg.user,
+      msg: newMsg.msg,
+      isSelf: false,
+      id: socket.id,
+    };
     socket.emit("get-messages", sendMsg);
   }
 
   componentDidMount = () => {
+    window.onbeforeunload = () => {
+      socket.emit("get-messages", {
+        user: this.props.user,
+        msg: "Goodbye everybody!",
+        isSelf: false,
+      });
+    };
+
     let component = this;
     socket.on("send-messages", function (msg) {
-      console.log("yes");
-      let msgs = component.state.msg.slice();
-      msgs.unshift(msg);
-      console.log(msgs);
+      console.log(msg);
+      let msgs = msg.map((msg) => {
+        if (msg.id === socket.id) {
+          return { user: msg.user, msg: msg.msg, isSelf: true };
+        } else {
+          return { user: msg.user, msg: msg.msg, isSelf: false };
+        }
+      });
       component.setState({ msg: msgs });
     });
   };
 
   sendMessage = (msg) => {
-    let sendMsg = { user: this.props.user, msg: msg, isSelf: false };
+    let sendMsg = {
+      user: this.props.user,
+      msg: msg,
+      isSelf: false,
+      id: socket.id,
+    };
     socket.emit("get-messages", sendMsg);
-    sendMsg.isSelf = true;
-    let msgs = this.state.msg.slice();
-
-    msgs.unshift(sendMsg);
-    this.setState({ msg: msgs });
   };
   populateChat = () => {
     let msgs = [];

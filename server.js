@@ -17,15 +17,18 @@ var io = require("socket.io").listen(server);
 
 var userTable = {};
 var users = 0;
-
+var msgs = [];
 io.on("connection", (socket) => {
   users++;
   console.log("connected");
   socket.emit("users_count", users);
   console.log(users);
   socket.on("get-messages", function (msg) {
-    console.log(msg);
-    socket.broadcast.emit("send-messages", msg);
+    if (msgs.length < 25) {
+      msgs.unshift(msg);
+    }
+    console.log(msgs.length);
+    io.sockets.emit("send-messages", msgs);
   });
   socket.on("disconnect", (reason) => {
     users--;
