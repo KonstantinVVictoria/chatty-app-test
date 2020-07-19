@@ -159,7 +159,6 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  border-radius: 100px 100px 0px 100px;
   box-shadow: 12px 12px 12px 5px rgba(0, 0, 0, 0.08),
     -12px -12px 12px 5px rgba(255, 255, 255, 0.7);
   word-wrap: break-word;

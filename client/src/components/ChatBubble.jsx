@@ -25,6 +25,9 @@ class ChatBubble extends Component {
               backgroundColor: this.props.isSelf
                 ? "rgb(136, 81, 209)"
                 : "rgb(134, 134, 134)",
+              borderRadius: this.props.isSelf
+                ? "100px 100px 0px 100px"
+                : "100px 100px 100px 0px",
             }}
           >
             {this.props.msg}
@@ -34,8 +37,9 @@ class ChatBubble extends Component {
               style={{
                 marginTop: "0px",
                 marginBottom: "0px",
+
                 marginLeft: this.props.isSelf ? "auto" : "0px",
-                color: "white",
+                color: "rgb(134, 134, 134)",
                 fontSize: window.vH * 2,
               }}
             >
