@@ -6,19 +6,17 @@ app.options("*", cors());
 const bodyParser = require("body-parser");
 const path = require("path");
 
-var io = require("socket.io")();
 app.use(express.static(path.join("client/build")));
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
-app.listen(port, (err) => {
-  console.log(port);
-});
+
+server = require("http").createServer(app);
+server.listen(port);
+var io = require("socket.io").listen(server);
 
 var userTable = {};
 var users = 0;
-var chat = [];
-io.listen(8000);
 
 io.on("connection", (socket) => {
   users++;
@@ -31,6 +29,7 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("introduceto", msg);
   });
   socket.on("get-messages", function (msg) {
+    console.log(msg);
     socket.broadcast.emit("send-messages", msg);
   });
   socket.on("disconnect", (reason) => {
