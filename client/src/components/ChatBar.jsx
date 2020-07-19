@@ -43,6 +43,7 @@ class ChatBar extends Component {
               this.props.sendMessage(
                 document.getElementsByClassName("chatbar-input")[0].value
               );
+              document.getElementsByClassName("chatbar-input")[0].value = "";
             }}
           >
             <img
