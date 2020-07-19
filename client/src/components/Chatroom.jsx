@@ -61,6 +61,7 @@ class Chatroom extends Component {
             ? window.innerHeight
             : this.props.height + "px",
           margin: "0 auto",
+          marginTop: window.vH * 10 + "px",
         }}
       >
         {this.renderStage()}
