@@ -26,11 +26,11 @@ io.on("connection", (socket) => {
   socket.on("introduction", function (name) {
     let msg = {};
     msg[`${name}`] = "Hello everyone, my name is " + name;
-    socket.emit("send-messages", msg);
+    socket.broadcast.emit("send-messages", msg);
   });
   socket.on("get-messages", function (msg) {
     console.log(msg);
-    socket.emit("send-messages", msg);
+    socket.broadcast.emit("send-messages", msg);
   });
   socket.on("disconnect", (reason) => {
     users--;
