@@ -163,8 +163,7 @@ body {
   color: white;
   box-shadow: 12px 12px 12px 5px rgba(0, 0, 0, 0.08),
     -12px -12px 12px 5px rgba(255, 255, 255, 0.7);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   padding: 1vh 1vh 1vh !important;
 }
 .room-list-container {
