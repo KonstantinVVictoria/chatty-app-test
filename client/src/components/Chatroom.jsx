@@ -48,9 +48,6 @@ class Chatroom extends Component {
   };
 
   login = (username) => {
-    document.getElementsByClassName(
-      "login-container center-completely"
-    )[0].style.opacity = 0;
     this.setState({ username: username, stage: "chat" });
   };
 
