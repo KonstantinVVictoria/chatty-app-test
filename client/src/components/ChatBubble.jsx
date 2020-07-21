@@ -2,6 +2,14 @@ import React, { Component } from "react";
 
 class ChatBubble extends Component {
   state = {};
+
+  componentDidMount = () => {
+    document.getElementsByClassName(
+      "chat-outer"
+    )[0].scrollTop = document.getElementsByClassName(
+      "chat-outer"
+    )[0].scrollHeight;
+  };
   render() {
     return (
       <div

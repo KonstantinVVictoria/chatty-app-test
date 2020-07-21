@@ -22,6 +22,7 @@ class Login extends Component {
             overflow: "hidden",
             borderRadius: "100px",
             positive: "relative",
+            display: "flex",
           }}
         >
           <input
@@ -34,7 +35,7 @@ class Login extends Component {
             }}
             onKeyDown={(e) => {
               e.target.value =
-                e.target.value.length < 15
+                e.target.value.length <= 15
                   ? e.target.value
                   : e.target.value.substring(0, 15);
             }}
@@ -62,7 +63,7 @@ class Login extends Component {
             let errorAlert = document.getElementsByClassName(
               "login-error-alert"
             )[0];
-            let isValidLogin = input.length < 15 && input.length > 0;
+            let isValidLogin = input.length <= 15 && input.length > 0;
             if (isValidLogin) {
               errorAlert.style.visibility = "hidden";
               this.props.login(

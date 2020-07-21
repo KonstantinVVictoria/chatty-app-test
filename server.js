@@ -5,6 +5,7 @@ app.use(cors());
 app.options("*", cors());
 const bodyParser = require("body-parser");
 const path = require("path");
+const e = require("express");
 
 app.use(express.static(path.join("client/build")));
 app.use(bodyParser.json());
@@ -26,6 +27,9 @@ io.on("connection", (socket) => {
   socket.on("get-messages", function (msg) {
     if (msgs.length < 25) {
       msgs.unshift(msg);
+    } else {
+      msgs.unshift(msg);
+      msgs.pop();
     }
     console.log(msgs.length);
     io.sockets.emit("send-messages", msgs);

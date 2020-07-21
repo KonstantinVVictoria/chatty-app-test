@@ -90,8 +90,14 @@ class Chat extends Component {
   render() {
     console.log("render");
     return (
-      <div className="chat-container center-completely">
-        <div className="chat">{this.populateChat()}</div>
+      <div
+        className="chat-container center-completely"
+        style={{ justifyContent: "start" }}
+      >
+        <div className="top-bar-shadow"></div>
+        <div className="chat-outer">
+          <div className="chat">{this.populateChat()}</div>
+        </div>
         <ChatBar sendMessage={this.sendMessage}></ChatBar>
       </div>
     );
